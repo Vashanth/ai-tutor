@@ -1,0 +1,62 @@
+.feedback {
+  padding: 20px;
+  max-width: 50%;
+}
+
+.feedback-section {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.feedback-section.correct {
+  background-color: #e6ffed;
+  border: 1px solid #4caf50;
+}
+
+.feedback-section.wrong {
+  background-color: #ffeded;
+  border: 1px solid #f44336;
+}
+
+.feedback-section.info {
+  background-color: #fff8e1;
+  border: 1px solid #ffb300;
+}
+
+.skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.skeleton-bar {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(
+    -90deg,
+    #ff0000,
+    #ff7f00,
+    #ffff00,
+    #00ff00,
+    #0000ff,
+    #4b0082,
+    #8b00ff
+  );
+  background-size: 400% 100%;
+  border-radius: 4px;
+  animation: rainbow 1.5s ease-in-out infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
