@@ -10,6 +10,7 @@ import {
 import QuestionCard from "./QuestionCard";
 import { Button, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import BasicModal from "./Modal";
 
 function getUrlFromVideoId(videoId) {
   return `https://www.youtube.com/watch?v=${videoId}`;
@@ -32,6 +33,7 @@ const Sections = (props) => {
   const [videoSummary, setVideoSummary] = useState("");
   const [answers, setAnswers] = useState({});
   const [feedback, setFeedback] = useState({});
+  const [markdown, setMarkdown] = useState("");
   const areAllQuestionsAnswered =
     questions.length === Object.keys(answers).length && questions.length > 0;
 
@@ -61,34 +63,33 @@ const Sections = (props) => {
   }
 
   async function handleGetNextResource() {
-    const topic = localStorage.getItem("topic") || "";
-    const subtopics = JSON.parse(localStorage.getItem("subtopics")) || {};
+    // const topic = localStorage.getItem("topic") || "";
+    // const subtopics = JSON.parse(localStorage.getItem("subtopics")) || {};
 
-    await updateMasteryLevel(
-      topic,
-      videoSummary,
-      getResourceIdFromQueryParam(),
-      questions,
-      Object.values(answers)
-    );
+    // const mastery = await updateMasteryLevel(
+    //   topic,
+    //   videoSummary,
+    //   getResourceIdFromQueryParam(),
+    //   questions,
+    //   Object.values(answers)
+    // );
 
-    const response = await getRecommendations(topic, subtopics);
-    const { url, id, title } = response.data || {};
+    // const response = await getRecommendations(topic, subtopics);
+    // const { url, id, title } = response.data || {};
 
-    navigate(
-      `/video?videoId=${getVideoId(url)}&videoName=${title}&resourceId=${id}`
-    );
+    window.location.href =
+      "/video?videoId=1DWZFkipYtE&videoName=Chemical Bonding&resourceId=123";
   }
 
   return (
     <div className="container font-mono flex flex-col gap-4">
       <div className="flex justify-between">
         <span className="w-fit flex">{props.videoName}</span>
-        {areAllQuestionsAnswered && (
+        {!areAllQuestionsAnswered && (
           <Button
+            onClick={handleGetNextResource}
             variant="outlined"
             color="success"
-            onClick={() => handleGetNextResource()}
           >
             Continue your learning journey
           </Button>

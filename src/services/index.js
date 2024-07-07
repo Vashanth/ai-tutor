@@ -30,7 +30,7 @@ export async function updateMasteryLevel(
 ) {
   try {
     const response = await axios.post(
-      "https://ai-tutor-production-8767.up.railway.app/update_mastery_level",
+      "https://ai-tutor-production-8767.up.railway.app/topics/update_mastery_level",
       {
         user: "123",
         topic,
@@ -71,4 +71,14 @@ export function getAnswerFeedback(question, answer) {
       answer,
     }
   );
+}
+
+export function getMarkdownReport() {
+  return `
+# Markdown Report
+## Section 1
+This is the content of section 1
+## Section 2
+<b>Hai</b>
+  `;
 }
